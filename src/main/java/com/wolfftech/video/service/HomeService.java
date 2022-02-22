@@ -13,7 +13,7 @@ import java.util.Optional;
 public class HomeService {
 
     @Autowired
-    private Dao dao;
+    private final Dao dao;
 
 
     public HomeService(Dao dao){
@@ -32,12 +32,10 @@ public class HomeService {
         dao.save(video);
     }
 
-
     public Optional<Video> getVideoById(Long id){
-        Optional<Video> video = dao.findById(id);
-
-        return video;
+        return dao.findById(id);
     }
+
     public void deleteById(Long id){
         dao.deleteById(id);
     }
